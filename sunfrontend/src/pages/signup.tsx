@@ -22,7 +22,7 @@ export default function Signup({}: any) {
       <Backpage>
         <MdBackspace size={40} />
         <Link href="/">
-          <span> Back to Main</span>
+          <span> Back</span>
         </Link>
       </Backpage>
       <SignupBox>
@@ -80,11 +80,19 @@ export default function Signup({}: any) {
             })}
           </CheckRole>
         </WriteBox>
-        <SignupBtn>Go to Sign Up</SignupBtn>
+        <SignupBtn>
+          <Link href="/main">
+            <SignupText>Sign Up</SignupText>
+          </Link>
+        </SignupBtn>
       </SignupBox>
     </>
   );
 }
+
+const SignupText = styled.div`
+  color: white;
+`
 const UseWrite = styled.input`
   font-size: 25px;
   border: none;
@@ -183,6 +191,7 @@ const SignupBox = styled.div`
   flex-direction: column;
   align-items: center;
   font-size: 25px;
+
 `;
 const Backpage = styled.div`
   width: 100%;

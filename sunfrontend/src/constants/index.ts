@@ -6,3 +6,18 @@ export const RoleList = [
   { name: "전공자", id: 4, hrefLink: "" },
 
 ];
+
+export const Roket = [
+  {month: "january", color: "#6680FF"},
+  {month: "february", color: "#6680FF"},
+  {month: "march", color: "#FF84B6"},
+  {month: "april", color: "#FF84B6"},
+  {month: "may", color: "#FF84B6"},
+  {month: "june", color: "#FF3F3F"},
+  {month: "january", color: "#FF3F3F"},
+  {month: "july", color: "#FF3F3F"},
+  {month: "august", color: "#FF3F3F"},
+  {month: "october", color: "#FF9F66"},
+  {month: "november", color: "#FF9F66"},
+  {month: "december", color: "#6680FF"},
+]
