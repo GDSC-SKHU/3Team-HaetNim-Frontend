@@ -1,71 +1,130 @@
 import styled from "styled-components";
-import { BsSearch } from "react-icons/bs";
-import Main from "../components/Main";
+import { FaRegUser } from "react-icons/fa";
+import { AiOutlineLock } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
 import Link from "next/link";
-
+import { useState } from "react";
+import { RxRocket } from "react-icons/rx";
+import React from "react";
 
 export default function Home() {
+  const [passwordType, setPasswordType] = useState(false);
+  const [lookPassword, setLookPassword] = useState("password");
+  const PassworrdType = () => {
+    passwordType ? setLookPassword("password") : setLookPassword("text");
+  };
   return (
     <>
-      <HomeNavBox>
-        <SearchBox>
-          <SearchIconBox>
-          <BsSearch size={25} color={"#fb8d0f"}/>
-          </SearchIconBox>
-        </SearchBox>
-        <LoginBox>
-          <Link href="/login">Login</Link>
-          <Link href="/signup">Sign in</Link>
-        </LoginBox>
-      </HomeNavBox>
-      
-      <Main />
+      <LoginBox>
+        <WriteBox>
+          <FaRegUser size={25} />
+          <UserWrite></UserWrite>
+        </WriteBox>
+        <WriteBox>
+          <AiOutlineLock size={30} />
+          <UserWrite type={lookPassword}></UserWrite>
+          <div
+            onClick={() => {
+              setPasswordType((prev) => !prev);
+              PassworrdType();
+            }}
+          >
+            {passwordType ? (
+              <AiOutlineEye size={30} />
+            ) : (
+              <AiOutlineEyeInvisible size={30} />
+            )}
+          </div>
+        </WriteBox>
+        <div>
+          <LoginBtn>
+            <Link href="/main">
+              <LoginText>Login</LoginText>
+            </Link>
+          </LoginBtn>
+          <LoginBtn>
+            <Link href="/signup">
+              <LoginText>Sign Up</LoginText>
+            </Link>
+          </LoginBtn>
+        </div>
+      </LoginBox>
+      <RoketFoot>
+        ___
+        <RxRocket size={70} />
+      </RoketFoot>
     </>
   );
 }
-const SearchIconBox = styled.div`
-  padding: 3px;
-`
 
-const HomeNavBox = styled.nav`
-  background-color: #ffe8d6;
-  border: #fce0cb 0.5px solid;
-  height: 3rem;
-  width: 83%;
-  margin: auto;
-  border-radius: 20px;
-
+const RoketFoot = styled.div`
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  font-size: 5rem;
+  color: #ff9f76;
 `;
-const SearchBox = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  border-bottom: 3px solid #ffb176;
-  width: 20rem;
-  height: 70%;
-  margin: 5px 5rem;
-  transition: all 0.5s ease-out;
+const LoginText = styled.div`
+  color: white;
+`;
+
+const UserWrite = styled.input`
+  background-color: #fff5ee;
+  width: 15rem;
+  height: 1.5rem;
+  margin: 1rem;
+  border: none;
+  border-bottom: 2px solid #ffb176;
+  font-size: 20px;
+  padding-left: 10px;
+  &:focus {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #ffb176;
+  }
+`;
+const LoginBtn = styled.button`
+  background-color: #ffb176;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  height: 4rem;
+  width: 10rem;
   border-radius: 10px;
-  &:hover {
-    background-color: white;
-    text-decoration: underline #ff971d 0.21rem;
+  border: 5px solid #ffc97e;
+  margin: 3rem 1rem 1rem 1rem;
+
+  &:active, :hover {
+    transform: translateY(5px);
+    box-shadow: 0px -4px 10px #dec4a3;
+    transition: transform 0.3s ease;
+    background-color: #fca364;
+    border: 5px solid #fac466;
+    color: white;
   }
 `;
-const LoginBox = styled.div`
+const WriteBox = styled.div`
+  border: 1px solid #ffb176;
+  border-radius: 5px;
+  color: #ffb176;
+  height: 3rem;
+  width: 20rem;
+  margin: 1rem;
+  padding: 0.5rem 1.5rem;
   display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-  margin: 0.8rem 5rem;
-  & > * {
-    padding-right: 1rem;
-    font-size: 1.2rem;
-    text-align: center;
-    &:hover {
-      transform: translateY(-3px);
-      transition: transform 0.3s ease;
-      text-decoration: underline #ff971d 0.21rem;
-    }
-  }
+  align-items: center;
+  background-color: #fff5ee;
+`;
+
+const LoginBox = styled.div`
+  border-radius: 20px;
+  width: 34rem;
+  height: 30rem;
+  margin: 4rem auto;
+  background-color: #fff1e6;
+  box-shadow: 3px 3px 5px #dec4a3;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
