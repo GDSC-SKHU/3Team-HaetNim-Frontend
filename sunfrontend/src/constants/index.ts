@@ -7,17 +7,18 @@ export const RoleList = [
 
 ];
 
+// 이름 바꾸기
 export const Roket = [
-  {month: "january", color: "#6680FF"},
-  {month: "february", color: "#6680FF"},
-  {month: "march", color: "#FF84B6"},
-  {month: "april", color: "#FF84B6"},
-  {month: "may", color: "#FF84B6"},
-  {month: "june", color: "#FF3F3F"},
-  {month: "january", color: "#FF3F3F"},
-  {month: "july", color: "#FF3F3F"},
-  {month: "august", color: "#FF3F3F"},
-  {month: "october", color: "#FF9F66"},
-  {month: "november", color: "#FF9F66"},
-  {month: "december", color: "#6680FF"},
+  {month: "JAN", color: "#6680FF"},
+  {month: "FEB", color: "#6680FF"},
+  {month: "MAR", color: "#FF84B6"},
+  {month: "APR", color: "#FF84B6"},
+  {month: "MAY", color: "#FF84B6"},
+  {month: "JUN", color: "#FF3F3F"},
+  {month: "JUL", color: "#FF3F3F"},
+  {month: "AUG", color: "#FF3F3F"},
+  {month: "SEPT", color: "#FF3F3F"},
+  {month: "OCT", color: "#FF9F66"},
+  {month: "NOV", color: "#FF9F66"},
+  {month: "DEC", color: "#6680FF"},
 ]
