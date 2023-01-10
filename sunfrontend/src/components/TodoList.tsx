@@ -54,6 +54,7 @@ const DayBox = styled.div`
     transition: all 0.7s ease;
   }
 `;
+
 const ListPin = styled.div`
   background-color: #ff9451;
   width: 20%;
@@ -64,6 +65,7 @@ const ListBox = styled.div`
   background-color: #fff1e6;
   width: 40%;
   height: 40rem;
+
   margin: 0px auto;
   margin-bottom: 4rem;
   border-radius: 30px;
@@ -73,4 +75,5 @@ const ListBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
