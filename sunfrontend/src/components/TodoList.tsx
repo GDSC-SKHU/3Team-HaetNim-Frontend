@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import { MdOutlineSubdirectoryArrowLeft } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
+=======
+>>>>>>> main
 import styled from "styled-components";
 
 export default function TodoList() {
@@ -8,6 +11,7 @@ export default function TodoList() {
       <ListPin />
       <ListBox>
         <DayBox>
+<<<<<<< HEAD
           <div> 2023.01</div>
         </DayBox>
         <SubmitBox>
@@ -15,10 +19,14 @@ export default function TodoList() {
         <SubmitTodos></SubmitTodos>
         <MdOutlineSubdirectoryArrowLeft size={40} />
         </SubmitBox>
+=======
+        </DayBox>
+>>>>>>> main
       </ListBox>
     </>
   );
 }
+<<<<<<< HEAD
 const SubmitBox = styled.div`
   display: flex;
   justify-content: center;
@@ -54,6 +62,20 @@ const DayBox = styled.div`
     transition: all 0.7s ease;
   }
 `;
+=======
+const DayBox = styled.div`
+  background-color: #fffbf7;
+  width: 20rem;
+  height: 3rem;
+  font-size: 20px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 5px #ffa066;
+  &:hover{
+    background-color: white;
+  }
+
+`
+>>>>>>> main
 const ListPin = styled.div`
   background-color: #ff9451;
   width: 20%;
@@ -63,7 +85,11 @@ const ListPin = styled.div`
 const ListBox = styled.div`
   background-color: #fff1e6;
   width: 40%;
+<<<<<<< HEAD
   height: 40rem;
+=======
+  height: 50rem;
+>>>>>>> main
   margin: 0px auto;
   margin-bottom: 4rem;
   border-radius: 30px;
@@ -71,6 +97,10 @@ const ListBox = styled.div`
   padding: 2rem;
 
   display: flex;
+<<<<<<< HEAD
   flex-direction: column;
   align-items: center;
+=======
+  justify-content: center;
+>>>>>>> main
 `;
