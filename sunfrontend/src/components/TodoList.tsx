@@ -11,20 +11,21 @@ export default function TodoList() {
           <div> 2023.01</div>
         </DayBox>
         <SubmitBox>
-          <BsPencil size={35}/>
-        <SubmitTodos></SubmitTodos>
-        <MdOutlineSubdirectoryArrowLeft size={40} />
+          <BsPencil size={35} />
+          <SubmitTodos></SubmitTodos>
+          <MdOutlineSubdirectoryArrowLeft size={40} />
         </SubmitBox>
       </ListBox>
     </>
   );
 }
+
 const SubmitBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ff9451;
-`
+`;
 const SubmitTodos = styled.input`
   width: 30rem;
   height: 3rem;
@@ -34,7 +35,6 @@ const SubmitTodos = styled.input`
   border-radius: 20px;
   border: 3px solid #ffcaa8;
   margin: 20px;
-
 `;
 const DayBox = styled.div`
   width: 10rem;
