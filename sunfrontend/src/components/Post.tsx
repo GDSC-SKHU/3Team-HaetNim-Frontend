@@ -3,57 +3,40 @@ import { BsPencil } from "react-icons/bs";
 import styled from "styled-components";
 import format from "date-fns/format";
 
-export default function TodoList({ selectedDay }:any) {
+export default function Post({ content = '' }: any) {
   return (
     <>
       <ListPin />
       <ListBox>
-        <DayBox>
-          <div> {format(selectedDay, "PPP")}</div>
-        </DayBox>
+        <AtMonth></AtMonth>
         <SubmitBox>
-          <BsPencil size={35} />
-          <SubmitTodos></SubmitTodos>
-          <MdOutlineSubdirectoryArrowLeft size={40} />
+          <SubmitTodos>{content}</SubmitTodos>
         </SubmitBox>
       </ListBox>
     </>
   );
 }
-
+const AtMonth = styled.div`
+  background-color: white;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+`;
 const SubmitBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   color: #ff9451;
 `;
-const SubmitTodos = styled.input`
+const SubmitTodos = styled.div`
   width: 30rem;
-  height: 3rem;
+  height: 20rem;
   background-color: #fffff4;
   outline: none;
   border: none;
   border-radius: 20px;
   border: 3px solid #ffcaa8;
   margin: 20px;
-`;
-const DayBox = styled.div`
-  width: 10rem;
-  height: 3rem;
-  font-size: 30px;
-  border-left: 5px solid #ff5f2a;
-  border-right: 5px solid #ff5f2a;
-  color: #ff5f2a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  padding: 5px;
-
-  &:hover {
-    background-color: #fffff4;
-    transition: all 0.7s ease;
-  }
 `;
 
 const ListPin = styled.div`

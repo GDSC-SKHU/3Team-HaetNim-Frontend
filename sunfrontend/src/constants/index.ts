@@ -7,7 +7,7 @@ export const RoleList = [
 
 ];
 
-export const Roket = [
+export const Rocket = [
   {month: "january", color: "#6680FF"},
   {month: "february", color: "#6680FF"},
   {month: "march", color: "#FF84B6"},

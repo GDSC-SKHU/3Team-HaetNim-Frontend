@@ -1,19 +1,20 @@
 import Link from "next/link";
 import { RiRocket2Line } from "react-icons/ri";
 import styled from "styled-components";
-import { Roket } from "../constants";
+import Post from "../components/Post";
+import { Rocket } from "../constants";
 
 export default function Main() {
   return (
     <>
       <RoketTable>
         {Array.from(
-          Roket.map((RoketProps, i) => (
+          Rocket.map((RocketProps, i) => (
             <RoketBox key={i}>
               <div>
                 <RiRocket2Line size={60} />
               </div>
-              <p>{RoketProps.month}</p>
+              <p>{RocketProps.month}</p>
             </RoketBox>
           ))
         )}
@@ -27,6 +28,7 @@ export default function Main() {
         <MarkdownWriteBox cols={30} rows={10} />
         <MarkdownSeeBox />
       </WriteBox>
+      <Post></Post>
     </>
   );
 }
