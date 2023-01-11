@@ -12,7 +12,7 @@ export default function Main() {
     {/* 로켓 반복 */}
       <RoketTable>  
         {Array.from(
-          Roket.map((RoketProps, i) => (
+          Rocket.map((RocketProps, i) => (
             <RoketBox key={i}>
               <div>
                 {/* <RiRocket2Line size={60} /> */}
@@ -23,7 +23,7 @@ export default function Main() {
                   style={{ width: 80, height: 80 }}
                 />
               </div>
-              <p>{RoketProps.month}</p>
+              <p>{RocketProps.month}</p>
             </RoketBox>
           ))
         )}
@@ -82,11 +82,10 @@ const RoketHr = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  &>*{
+  & > * {
     color: white;
     font-size: 20px;
     font-weight: bolder;
-
   }
 `;
 const RoketTable = styled.div`
