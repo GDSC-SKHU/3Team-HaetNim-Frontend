@@ -1,34 +1,44 @@
 import Link from "next/link";
-import { RiRocket2Line } from "react-icons/ri";
+// import { RiRocket2Line } from "react-icons/ri";
 import styled from "styled-components";
 import { Roket } from "../constants";
+import React from "react";
+import Lottie from "react-lottie-player";
+import lottieJson from '../my-lottie.json';
 
 export default function Main() {
   return (
     <>
-      <RoketTable>
+    {/* 로켓 반복 */}
+      <RoketTable>  
         {Array.from(
           Roket.map((RoketProps, i) => (
             <RoketBox key={i}>
               <div>
-                <RiRocket2Line size={60} />
+                {/* <RiRocket2Line size={60} /> */}
+                <Lottie
+                  loop
+                  animationData={lottieJson}
+                  play
+                  style={{ width: 80, height: 80 }}
+                />
               </div>
               <p>{RoketProps.month}</p>
             </RoketBox>
           ))
         )}
       </RoketTable>
-      <RoketHr>
-        <Link href="/todo">
-        <div>
-          타입캡슐 날리기
-        </div>
-        </Link>
-      </RoketHr>
       <WriteBox>
         <MarkdownWriteBox cols={30} rows={10} />
         <MarkdownSeeBox />
       </WriteBox>
+      <RoketHr>
+        <Link href="/todo">
+        <div>
+          로켓 발사!
+        </div>
+        </Link>
+      </RoketHr>
     </>
   );
 }
@@ -39,7 +49,7 @@ const WriteBox = styled.div`
 const MarkdownWriteBox = styled.textarea`
   border: 3px solid #ffc651;
   width: 45rem;
-  height: 40rem;
+  height: 20rem;
   margin: 2rem;
   overflow: scroll;
   outline: none;
@@ -54,7 +64,7 @@ const MarkdownWriteBox = styled.textarea`
 const MarkdownSeeBox = styled.div`
   border: 3px solid #ffc651;
   width: 45rem;
-  height: 40rem;
+  height: 20rem;
   margin: 2rem;
   overflow: scroll;
   outline: none;
@@ -93,19 +103,19 @@ const RoketBox = styled.div`
   font-weight: bold;
   font-family: fantasy;
   border-radius: 100%;
-  color: white;
-  background-color: #ffc651;
+  color: #ffc651;
+  background-color: white;
   margin: 10px;
   padding: 1.3rem;
   width: 4.5rem;
   height: 4.5rem;
   &:hover {
-    background-color: #ff6e25;
-    & > div {
-      transform: translateY(-5rem);
-      opacity: 0;
-      transition: all 0.8s ease;
-    }
+    border: 1px solid #ff6e25;
+    // & > div {
+    //   transform: translateY(-5rem);
+    //   opacity: 0;
+    //   transition: all 0.8s ease;
+    // }
   }
   & > p {
     margin-bottom: 5px;
