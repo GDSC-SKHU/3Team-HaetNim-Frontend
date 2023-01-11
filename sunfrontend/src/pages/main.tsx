@@ -1,7 +1,7 @@
 import Link from "next/link";
 // import { RiRocket2Line } from "react-icons/ri";
 import styled from "styled-components";
-import { Roket } from "../constants";
+import { Rocket } from "../constants";
 import React from "react";
 import Lottie from "react-lottie-player";
 import lottieJson from '../my-lottie.json';
@@ -46,6 +46,7 @@ const WriteBox = styled.div`
   display: flex;
   justify-content: center;
 `;
+
 const MarkdownWriteBox = styled.textarea`
   border: 3px solid #ffc651;
   width: 45rem;
@@ -61,6 +62,7 @@ const MarkdownWriteBox = styled.textarea`
     background-color: rgb(255, 251, 242);
   }
 `;
+
 const MarkdownSeeBox = styled.div`
   border: 3px solid #ffc651;
   width: 45rem;
@@ -110,11 +112,6 @@ const RoketBox = styled.div`
   height: 4.5rem;
   &:hover {
     border: 1px solid #ff6e25;
-    // & > div {
-    //   transform: translateY(-5rem);
-    //   opacity: 0;
-    //   transition: all 0.8s ease;
-    // }
   }
   & > p {
     margin-bottom: 5px;

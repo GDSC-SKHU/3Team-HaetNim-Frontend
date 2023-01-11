@@ -8,7 +8,7 @@ export const RoleList = [
 ];
 
 // 이름 바꾸기
-export const Roket = [
+export const Rocket = [
   {month: "JAN", color: "#6680FF"},
   {month: "FEB", color: "#6680FF"},
   {month: "MAR", color: "#FF84B6"},
@@ -21,4 +21,4 @@ export const Roket = [
   {month: "OCT", color: "#FF9F66"},
   {month: "NOV", color: "#FF9F66"},
   {month: "DEC", color: "#6680FF"},
-]
+];
