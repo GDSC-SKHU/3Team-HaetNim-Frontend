@@ -111,7 +111,7 @@ const RoketBox = styled.div`
   height: 4.5rem;
   &:hover {
     border: 1px;
-    border-color: #ff6e25;
+    border-color: #ff6e25;n
     // & > div {
     //   transform: translateY(-5rem);
     //   opacity: 0;
