@@ -12,21 +12,23 @@ import { getUserInfo } from "../libs/api";
 import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getMonth";
 
-export default function Calender({ data }: any) {
+// export default function Calender({ data }: any) {
+export default function Calender() {
   const [selectedDay, setSelectedDay] = useState<Date>();
   const [showTodoList, setShowTodoList] = useState(false);
-  const [selectRocket, setSelectRocket] = useState(false);
+  const [showPost, setShowPost] = useState(false);
+
+  const [data, setData] = useState<any>();
   const [foundData, setFoundData] = useState<any>();
 
   const onSelectRocket = (index: number) => {
     setShowTodoList(false);
     const monthNow = getMonth(new Date());
     // 현재 날짜가 1월이면, 1월 버튼 외에는 다 무시한다.
-    if(monthNow !== index){
+    if (!data || monthNow !== index) {
       return;
     }
-    setSelectRocket(true);
-
+    setShowPost(true);
     const matchedData = data.find(
       ({ date }: any) => getMonth(new Date(date)) === index
     );
@@ -36,7 +38,7 @@ export default function Calender({ data }: any) {
   const onSelectDay = (day: any) => {
     setSelectedDay(day);
     setShowTodoList(true);
-    setSelectRocket(false);
+    setShowPost(false);
   };
 
   const footer = selectedDay ? (
@@ -44,6 +46,16 @@ export default function Calender({ data }: any) {
   ) : (
     <p>Please pick a day.</p>
   );
+
+  // useEffect(() => {
+  //   getUserInfo({ memberId: "member_B" })
+  //     .then((res) => res.json())
+  //     .then((data) =>
+  //       setData(
+  //         data.postDTOs.filter(({ date }: any) => getYear(new Date(date)) === getYear(new Date()))
+  //       )
+  //     );
+  // }, []);
 
   return (
     <>
@@ -67,30 +79,35 @@ export default function Calender({ data }: any) {
           ))
         )}
       </RocketWrapper>
+
       {showTodoList && <TodoList selectedDay={selectedDay} />}
-      {selectRocket && <Post content={foundData?.content} />}
+      {showPost && (
+          <Post content={foundData?.content} />
+
+      )}
     </>
   );
 }
 
-export async function getServerSideProps(context) {
-  const res = await getUserInfo({ memberId: "member_B" });
-  const data = await res.json();
 
-  if (!data) {
-    return {
-      notFound: true,
-    };
-  }
+// export async function getServerSideProps(context) {
+//   const res = await getUserInfo({ memberId: "member_B" });
+//   const data = await res.json();
 
-  return {
-    props: {
-      data: data.postDTOs.filter(({ date }: any) => {
-        return getYear(new Date(date)) === getYear(new Date());
-      }),
-    }, // will be passed to the page component as props
-  };
-}
+//   if (!data) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: {
+//       data: data.postDTOs.filter(({ date }: any) => {
+//         return getYear(new Date(date)) === getYear(new Date());
+//       }),
+//     }, // will be passed to the page component as props
+//   };
+// }
 
 const RocketWrapper = styled.div`
   width: 500px;
@@ -130,7 +147,8 @@ const RoketBox = styled.div`
 `;
 
 const CalenderBox = styled.div`
-  background-color: #ffb176;
+  background-color: #ffe5d1;
+  border: 3px solid #ffb176;
   display: flex;
   justify-content: center;
   align-items: center;

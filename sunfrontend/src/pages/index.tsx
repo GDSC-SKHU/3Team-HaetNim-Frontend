@@ -7,23 +7,50 @@ import Link from "next/link";
 import { useState } from "react";
 import { RxRocket } from "react-icons/rx";
 import React from "react";
+import { login } from "../libs/api";
+import Router from "next/router";
 
 export default function Home() {
   const [passwordType, setPasswordType] = useState(false);
   const [lookPassword, setLookPassword] = useState("password");
+  const [memberId, setMemberId] = useState("");
+  const [password, setPassword] = useState("");
+
   const PassworrdType = () => {
     passwordType ? setLookPassword("password") : setLookPassword("text");
   };
+
+
+  const onClickLogin = () => {
+    login({ memberId, password })
+      .then(({ grantType, accessToken }: any) => {
+        const token = `${grantType} ${accessToken}`;
+        console.log("token", token);
+        localStorage.setItem('TOKEN', token);
+        Router.push('/main');
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+
   return (
     <>
       <LoginBox>
         <WriteBox>
           <FaRegUser size={25} />
-          <UserWrite></UserWrite>
+          <UserWrite
+            value={memberId}
+            onChange={(e: any) => setMemberId(e.target.value)}
+          ></UserWrite>
         </WriteBox>
         <WriteBox>
           <AiOutlineLock size={30} />
-          <UserWrite type={lookPassword}></UserWrite>
+          <UserWrite
+            value={password}
+            onChange={(e: any) => setPassword(e.target.value)}
+            type={lookPassword}
+          ></UserWrite>
           <div
             onClick={() => {
               setPasswordType((prev) => !prev);
@@ -38,10 +65,8 @@ export default function Home() {
           </div>
         </WriteBox>
         <div>
-          <LoginBtn>
-            <Link href="/main">
-              <LoginText>Login</LoginText>
-            </Link>
+          <LoginBtn onClick={onClickLogin}>
+            <LoginText>Login</LoginText>
           </LoginBtn>
           <LoginBtn>
             <Link href="/signup">
@@ -94,7 +119,8 @@ const LoginBtn = styled.button`
   border: 5px solid #ffc97e;
   margin: 3rem 1rem 1rem 1rem;
 
-  &:active, :hover {
+  &:active,
+  :hover {
     transform: translateY(5px);
     box-shadow: 0px -4px 10px #dec4a3;
     transition: transform 0.3s ease;
