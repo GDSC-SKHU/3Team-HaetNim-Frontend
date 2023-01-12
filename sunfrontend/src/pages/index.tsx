@@ -75,15 +75,15 @@ export default function Home() {
           </LoginBtn>
         </div>
       </LoginBox>
-      <RoketFoot>
+      <RocketFoot>
         ___
         <RxRocket size={70} />
-      </RoketFoot>
+      </RocketFoot>
     </>
   );
 }
 
-const RoketFoot = styled.div`
+const RocketFoot = styled.div`
   display: flex;
   justify-content: center;
   font-size: 5rem;

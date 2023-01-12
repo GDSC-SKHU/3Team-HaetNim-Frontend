@@ -1,7 +1,7 @@
 import Link from "next/link";
 // import { RiRocket2Line } from "react-icons/ri";
 import styled from "styled-components";
-import { Roket } from "../constants";
+import { Rocket } from "../constants";
 import React from "react";
 import Lottie from "react-lottie-player";
 import lottieJson from '../my-lottie.json';
@@ -10,10 +10,10 @@ export default function Main() {
   return (
     <>
     {/* 로켓 반복 */}
-      <RoketTable>  
+      <RocketTable>  
         {Array.from(
           Rocket.map((RocketProps, i) => (
-            <RoketBox key={i}>
+            <RocketBox key={i}>
               <div>
                 {/* <RiRocket2Line size={60} /> */}
                 <Lottie
@@ -24,21 +24,21 @@ export default function Main() {
                 />
               </div>
               <p>{RocketProps.month}</p>
-            </RoketBox>
+            </RocketBox>
           ))
         )}
-      </RoketTable>
+      </RocketTable>
       <WriteBox>
         <MarkdownWriteBox cols={30} rows={10} />
         <MarkdownSeeBox />
       </WriteBox>
-      <RoketHr>
-        <Link href="/todo">
+      <RocketHr>
+        <Link href="/calender">
         <div>
           로켓 발사!
         </div>
         </Link>
-      </RoketHr>
+      </RocketHr>
     </>
   );
 }
@@ -72,7 +72,7 @@ const MarkdownSeeBox = styled.div`
   font-size: 20px;
   border-radius: 1rem;
 `;
-const RoketHr = styled.div`
+const RocketHr = styled.div`
   background-color: #ffc651;
   width: 96%;
   height: 3rem;
@@ -88,12 +88,13 @@ const RoketHr = styled.div`
     font-weight: bolder;
   }
 `;
-const RoketTable = styled.div`
+const RocketTable = styled.div`
   display: flex;
   justify-content: center;
+  height: 10rem;
 `;
 
-const RoketBox = styled.div`
+const RocketBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -107,7 +108,7 @@ const RoketBox = styled.div`
   margin: 10px;
   padding: 1.3rem;
   width: 4.5rem;
-  height: 4.5rem;
+  height: 5rem;
   &:hover {
     border: 1px solid #ff6e25;
     // & > div {
