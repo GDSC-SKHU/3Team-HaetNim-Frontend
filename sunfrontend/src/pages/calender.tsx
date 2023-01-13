@@ -86,7 +86,7 @@ export default function Calender() {
 
       {showTodoList && <TodoList selectedDay={selectedDay} />}
       {showPost && (
-          <Post content={foundData?.content} />
+          <Post content={foundData?.content} open={setShowPost}/>
 
       )}
     </>

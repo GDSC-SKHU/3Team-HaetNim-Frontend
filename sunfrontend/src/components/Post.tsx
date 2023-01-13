@@ -3,7 +3,7 @@ import { GiCancel } from "react-icons/gi";
 import styled from "styled-components";
 import format from "date-fns/format";
 
-export default function Post({ content = "" }: any) {
+export default function Post({ content = "", open }: any) {
   return (
     <>
       <PostdivBox>
@@ -12,7 +12,9 @@ export default function Post({ content = "" }: any) {
           <SubmitBox>
             <SubmitTodos>{content}</SubmitTodos>
           </SubmitBox>
+          <div onClick={()=>{open((prev:boolean)=>(!prev))}}>
           <GiCancel size={30}/>
+          </div>
         </ListBox>
       </PostdivBox>
     </>
