@@ -1,19 +1,43 @@
-import Link from "next/link";
-// import { RiRocket2Line } from "react-icons/ri";
 import styled from "styled-components";
 import { Rocket } from "../constants";
-import React from "react";
+import { FcFolder } from "react-icons/fc";
+import { FcOpenedFolder } from "react-icons/fc";
+import React, { useState } from "react";
 import Lottie from "react-lottie-player";
-import lottieJson from '../my-lottie.json';
+import lottieJson from "../my-lottie.json";
+import Write from "../components/Write";
+import { tr } from "date-fns/locale";
+
+const Folder = () => {
+  const [folderStatus, setFolderStatus] = useState(false);
+  return (
+    <FolderDiv
+      onMouseOver={() => {
+        setFolderStatus(true);
+      }}
+      onMouseLeave={() => {
+        setFolderStatus(false);
+      }}
+    >
+      {!folderStatus ? <FcFolder size={500} /> : <FcOpenedFolder size={500} />}
+    </FolderDiv>
+  );
+};
 
 export default function Main() {
+  const [postStatus, setPostStatus] = useState(false);
   return (
     <>
-    {/* 로켓 반복 */}
-      <RocketTable>  
+      {/* 로켓 반복 */}
+      <RocketTable>
         {Array.from(
           Rocket.map((RocketProps, i) => (
-            <RocketBox key={i}>
+            <RocketBox
+              key={i}
+              onClick={() => {
+                setPostStatus(false);
+              }}
+            >
               <div>
                 {/* <RiRocket2Line size={60} /> */}
                 <Lottie
@@ -28,66 +52,26 @@ export default function Main() {
           ))
         )}
       </RocketTable>
-      <WriteBox>
-        <MarkdownWriteBox cols={30} rows={10} />
-        <MarkdownSeeBox />
-      </WriteBox>
-      <RocketHr>
-        <Link href="/calender">
-        <div>
-          로켓 발사!
-        </div>
-        </Link>
-      </RocketHr>
+      <MainDiv
+        onClick={() => {
+          setPostStatus(true);
+        }}
+      >
+        {postStatus ? <Write /> : <Folder />}
+      </MainDiv>
     </>
   );
 }
-const WriteBox = styled.div`
+const FolderDiv = styled.div`
+  width: 500px;
+  height: 500px;
+`;
+const MainDiv = styled.div`
+  height: 45rem;
   display: flex;
   justify-content: center;
 `;
-const MarkdownWriteBox = styled.textarea`
-  border: 3px solid #ffc651;
-  width: 45rem;
-  height: 20rem;
-  margin: 2rem;
-  overflow: scroll;
-  outline: none;
-  padding: 3rem;
-  font-size: 20px;
-  border-radius: 1rem;
-  &:active,
-  :focus {
-    background-color: rgb(255, 251, 242);
-  }
-`;
-const MarkdownSeeBox = styled.div`
-  border: 3px solid #ffc651;
-  width: 45rem;
-  height: 20rem;
-  margin: 2rem;
-  overflow: scroll;
-  outline: none;
-  padding: 3rem;
-  font-size: 20px;
-  border-radius: 1rem;
-`;
-const RocketHr = styled.div`
-  background-color: #ffc651;
-  width: 96%;
-  height: 3rem;
-  margin: auto;
-  margin-top: 1rem;
-  border-radius: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  & > * {
-    color: white;
-    font-size: 20px;
-    font-weight: bolder;
-  }
-`;
+
 const RocketTable = styled.div`
   display: flex;
   justify-content: center;

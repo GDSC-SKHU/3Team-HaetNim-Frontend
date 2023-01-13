@@ -44,7 +44,7 @@ export default function Calender() {
   const footer = selectedDay ? (
     <p>You selected {format(selectedDay, "PPP")}.</p>
   ) : (
-    <p>Please pick a day.</p>
+    <p></p>
   );
 
   // useEffect(() => {
@@ -128,8 +128,7 @@ const RoketBox = styled.div`
   border-radius: 100%;
   color: white;
   background-color: #ffc651;
-  /* margin: 10px; */
-  /* padding: 1.3rem; */
+  overflow: hidden;
   width: 120px;
   height: 120px;
   /* height: 4.5rem; */

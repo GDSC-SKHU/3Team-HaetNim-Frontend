@@ -3,8 +3,6 @@ import GlobalStyle from "../styles/style";
 import styled from "styled-components";
 import { RxRocket } from "react-icons/rx";
 import React from "react";
-import Lottie from "react-lottie-player";
-import lottieJson from './my-lottie.json';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

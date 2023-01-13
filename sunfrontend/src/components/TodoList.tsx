@@ -1,4 +1,4 @@
-import { BsPencil } from "react-icons/bs";
+import { FcFolder } from "react-icons/bs";
 import { RiDeleteBackLine } from "react-icons/ri";
 import styled from "styled-components";
 import format from "date-fns/format";
