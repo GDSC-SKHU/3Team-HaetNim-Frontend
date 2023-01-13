@@ -1,26 +1,29 @@
 import { MdOutlineSubdirectoryArrowLeft } from "react-icons/md";
-import { BsPencil } from "react-icons/bs";
+import { GiCancel } from "react-icons/gi";
 import styled from "styled-components";
 import format from "date-fns/format";
 
-export default function Post({ content = '' }: any) {
+export default function Post({ content = "" }: any) {
   return (
     <>
-      <ListPin />
-      <ListBox>
-        <AtMonth></AtMonth>
-        <SubmitBox>
-          <SubmitTodos>{content}</SubmitTodos>
-        </SubmitBox>
-      </ListBox>
+      <PostdivBox>
+        <ListPin />
+        <ListBox>
+          <SubmitBox>
+            <SubmitTodos>{content}</SubmitTodos>
+          </SubmitBox>
+          <GiCancel size={30}/>
+        </ListBox>
+      </PostdivBox>
     </>
   );
 }
-const AtMonth = styled.div`
-  background-color: white;
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
+const PostdivBox = styled.div`
+  position: fixed;
+  top: 10.15rem;
+  width: 100%;
+  height: 50rem;
+  z-index: 2;
 `;
 const SubmitBox = styled.div`
   display: flex;
@@ -29,14 +32,15 @@ const SubmitBox = styled.div`
   color: #ff9451;
 `;
 const SubmitTodos = styled.div`
-  width: 30rem;
-  height: 20rem;
+  width: 40rem;
+  height: 30rem;
   background-color: #fffff4;
   outline: none;
   border: none;
   border-radius: 20px;
   border: 3px solid #ffcaa8;
   margin: 20px;
+  padding: 20px;
 `;
 
 const ListPin = styled.div`
@@ -48,7 +52,9 @@ const ListPin = styled.div`
 const ListBox = styled.div`
   background-color: #ffdabe;
   width: 40%;
-  height: 40rem;
+  height:44rem;
+  margin: auto;
+  color: #ff883e;
 
   margin: 0px auto;
   margin-bottom: 4rem;
