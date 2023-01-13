@@ -8,20 +8,25 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />
-      <Title>햇님?</Title>
-      <SubTitle>
-        Todo Rocket
-        <RocketPower>
-          <RxRocket />
-        </RocketPower>
-      </SubTitle>
-      <Component {...pageProps} />
+      <Body>
+        <Title>햇님?</Title>
+        <SubTitle>
+          Todo Rocket
+          <RocketPower>
+            <RxRocket />
+          </RocketPower>
+        </SubTitle>
+        <Component {...pageProps} />
+      </Body>
     </>
   );
 }
+const Body = styled.div`
+  margin: auto;
+`
 const RocketPower = styled.div`
   margin: 5px;
-`
+`;
 const SubTitle = styled.h3`
   color: #ff971d;
   text-align: center;

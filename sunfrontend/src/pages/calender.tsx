@@ -23,12 +23,14 @@ export default function Calender() {
 
   const onSelectRocket = (index: number) => {
     setShowTodoList(false);
+    
     const monthNow = getMonth(new Date());
     // 현재 날짜가 1월이면, 1월 버튼 외에는 다 무시한다.
     if (!data || monthNow !== index) {
       return;
     }
     setShowPost(true);
+    console.log('data', data, monthNow !== index);
     const matchedData = data.find(
       ({ date }: any) => getMonth(new Date(date)) === index
     );
@@ -47,15 +49,17 @@ export default function Calender() {
     <p></p>
   );
 
-  // useEffect(() => {
-  //   getUserInfo({ memberId: "member_B" })
-  //     .then((res) => res.json())
-  //     .then((data) =>
-  //       setData(
-  //         data.postDTOs.filter(({ date }: any) => getYear(new Date(date)) === getYear(new Date()))
-  //       )
-  //     );
-  // }, []);
+  
+
+  useEffect(() => {
+    getUserInfo({ memberId: "member_B" })
+      .then((res) => res.json())
+      .then((data) =>
+        setData(
+          data.postDTOs.filter(({ date }: any) => getYear(new Date(date)) === getYear(new Date()))
+        )
+      );
+  }, []);
 
   return (
     <>
@@ -110,12 +114,12 @@ export default function Calender() {
 // }
 
 const RocketWrapper = styled.div`
-  width: 500px;
+  width: 80%;
   display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 40px;
+  grid-template-columns: repeat(6, 2fr);
   /* flex-wrap: wrap; */
-  margin: 10px auto;
+  margin: 5rem auto;
 `;
 const RoketBox = styled.div`
   display: flex;
@@ -131,13 +135,17 @@ const RoketBox = styled.div`
   overflow: hidden;
   width: 120px;
   height: 120px;
+  box-shadow: 0px 5px 5px gray;
   /* height: 4.5rem; */
   &:hover {
-    background-color: #ff6e25;
+    background-color: #ff3e25;
+    box-shadow: 0px 0px 2rem #a80000;
+    transform: translateY(3px);
+    transition: all 1s ease;
     & > div {
       transform: translateY(-5rem);
       opacity: 0;
-      transition: all 0.8s ease;
+      transition: all 2s ease;
     }
   }
   & > p {

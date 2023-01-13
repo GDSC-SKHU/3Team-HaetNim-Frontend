@@ -13,7 +13,7 @@ export const login = ({ memberId, password }: any) =>
 export const getUserInfo = ({ memberId }: any) =>
   fetch(`${baseUrl}@${memberId}`, {
     headers: {
-      Authorization: localStorage.getItem("TOKEN") ?? '',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZW1iZXJfQiIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzM2ODQ3NTB9.zmh6EoYi9nwomK5Jgw1TtNKGL_iVd8sA8XpfKsJghIc',
     },
   });
 

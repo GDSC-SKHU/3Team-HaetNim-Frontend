@@ -1,4 +1,4 @@
-import { FcFolder } from "react-icons/bs";
+import { BsPencil } from "react-icons/bs";
 import { RiDeleteBackLine } from "react-icons/ri";
 import styled from "styled-components";
 import format from "date-fns/format";
@@ -6,71 +6,71 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { instance } from "../libs/api";
 import useTodos from "../hooks/useTodos";
 
-const Comment = ({
-  id,
-  commentInput,
-  prevFix,
-  putInput,
-}: {
-  id: string;
-  commentInput: string;
-  prevFix: string;
-  putInput: Function;
-}) => {
-  const [inputBox, setInputBox] = useState(true);
+// const Comment = ({
+//   id,
+//   commentInput,
+//   prevFix,
+//   putInput,
+// }: {
+//   id: string;
+//   commentInput: string;
+//   prevFix: string;
+//   putInput: Function;
+// }) => {
+//   const [inputBox, setInputBox] = useState(true);
 
-  const onDelete = (e: React.FormEvent<HTMLDivElement>) => {
-    instance.delete(`/todos/${id}`).then(() => {
-      putInput();
-    });
-  };
+//   const onDelete = (e: React.FormEvent<HTMLDivElement>) => {
+//     instance.delete(`/todos/${id}`).then(() => {
+//       putInput();
+//     });
+//   };
 
-  const [fixTodo, setFixTodo] = useState<string>("");
+//   const [fixTodo, setFixTodo] = useState<string>("");
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFixTodo(e.target.value);
-  };
+//   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+//     setFixTodo(e.target.value);
+//   };
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (fixTodo === "") {
-      alert("입력이 필요합니다.");
-      return;
-    }
-    instance
-      .patch("/todos", {
-        records: [
-          {
-            id: id,
-            fields: {
-              Comment: fixTodo,
-            },
-          },
-        ],
-      })
-      .then(() => {
-        putInput();
-      });
-    setInputBox(true);
-  };
+//   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     if (fixTodo === "") {
+//       alert("입력이 필요합니다.");
+//       return;
+//     }
+//     instance
+//       .patch("/todos", {
+//         records: [
+//           {
+//             id: id,
+//             fields: {
+//               Comment: fixTodo,
+//             },
+//           },
+//         ],
+//       })
+//       .then(() => {
+//         putInput();
+//       });
+//     setInputBox(true);
+//   };
 
-  return (
-    <>
-      {inputBox ? (
-        <CommentDiv onClick={() => setInputBox(!inputBox)}>
-          {commentInput}
-        </CommentDiv>
-      ) : (
-        <form onSubmit={onSubmit}>
-          <SubmitTodos type="text" value={fixTodo} onChange={onChange} />
-        </form>
-      )}
-      <div onClick={onDelete}>
-        <RiDeleteBackLine size={30} />
-      </div>
-    </>
-  );
-};
+//   return (
+//     <>
+//       {inputBox ? (
+//         <CommentDiv onClick={() => setInputBox(!inputBox)}>
+//           {commentInput}
+//         </CommentDiv>
+//       ) : (
+//         <form onSubmit={onSubmit}>
+//           <SubmitTodos type="text" value={fixTodo} onChange={onChange} />
+//         </form>
+//       )}
+//       <div onClick={onDelete}>
+//         <RiDeleteBackLine size={30} />
+//       </div>
+//     </>
+//   );
+// };
 
 export default function TodoList({ selectedDay }: any) {
   const { todos, saveTodos } = useTodos();
@@ -80,26 +80,26 @@ export default function TodoList({ selectedDay }: any) {
     setNewTodo(e.target.value);
   };
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (fixTodo === "") {
-      alert("입력이 필요합니다.");
-      return;
-    }
-    instance
-      .patch("/todos", {
-        records: [
-          {
-            id: id,
-            content: fixTodo,
-          },
-        ],
-      })
-      .then(() => {
-        putInput();
-      });
-    setInputBox(true);
-  };
+  // const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   if (fixTodo === "") {
+  //     alert("입력이 필요합니다.");
+  //     return;
+  //   }
+  //   instance
+  //     .patch("/todos", {
+  //       records: [
+  //         {
+  //           id: id,
+  //           content: fixTodo,
+  //         },
+  //       ],
+  //     })
+  //     .then(() => {
+  //       putInput();
+  //     });
+  //   setInputBox(true);
+  // };
 
   const [fixTodo, setFixTodo] = useState<string>("");
 
@@ -111,18 +111,17 @@ export default function TodoList({ selectedDay }: any) {
           <DayBox>
             <div> {format(selectedDay, "PPP")}</div>
           </DayBox>
-          {/* <SubmitBox>
+          <SubmitBox>
             <BsPencil size={35} />
-            <SubmitTodos value={fixTodo}></SubmitTodos>
+            <SubmitTodos></SubmitTodos>
             <RiDeleteBackLine size={40} />
-          </SubmitBox> */}
+          </SubmitBox>
           {todos.map((eachTodo) => (
             <SubmitBox key={eachTodo.id}>
               <SubmitTodos
-                id={eachTodo.id}
-                commentInput={eachTodo.content}
-                prevFix={newTodo}
-                putInput={saveTodos}
+              // commentInput={eachTodo.content}
+              // prevFix={newTodo}
+              // putInput={saveTodos}
               />
             </SubmitBox>
           ))}
@@ -134,9 +133,8 @@ export default function TodoList({ selectedDay }: any) {
 const PostdivBox = styled.div`
   position: fixed;
   top: 10.15rem;
-  left: 2.5rem;
-  width: 100rem;
-  height: 45rem;
+  width: 100%;
+  height: 25rem;
   z-index: 1;
 `;
 const SubmitBox = styled.div`
@@ -146,8 +144,8 @@ const SubmitBox = styled.div`
   color: #ff9451;
 `;
 const SubmitTodos = styled.input`
-  width: 500px;
-  height: 3rem;
+  width: 400px;
+  height: 2rem;
   background-color: #fffff4;
   outline: none;
   border: none;
@@ -178,20 +176,24 @@ const DayBox = styled.div`
 
 const ListPin = styled.div`
   background-color: #ff9451;
-  width: 20%;
+  width: 17%;
   height: 1rem;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffd4b9;
 `;
 const ListBox = styled.div`
   background-color: #ffdabe;
-  width: 40%;
-  height: 44rem;
+  width: 35%;
+  height: 25rem;
 
   margin: 0px auto;
   margin-bottom: 4rem;
   border-radius: 30px;
   border: 3px solid #ff9451;
-  padding: 2rem;
+  padding: 1rem;
 
   display: flex;
   flex-direction: column;
